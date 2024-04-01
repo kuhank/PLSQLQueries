@@ -1,0 +1,41 @@
+--Recursive Query
+WITH DateCTE
+AS (
+	SELECT DATEADD(DAY, 1, EOMONTH(GETDATE(), - 3)) AS DATE
+	
+	UNION ALL
+	
+	SELECT DATEADD(DAY, 1, DATE)
+	FROM DateCTE
+	WHERE DATE < EOMONTH(GETDATE())
+	)
+SELECT *
+FROM DateCTE
+	-- Getting Business Days
+	/** Remove 1st and 7th date ****/
+	WITH DateCTE AS (
+		SELECT DATEADD(DAY, 1, EOMONTH(GETDATE(), - 3)) AS DATE
+		
+		UNION ALL
+		
+		SELECT DATEADD(DAY, 1, DATE)
+		FROM DateCTE
+		WHERE DATE < EOMONTH(GETDATE())
+		)
+	,BusinessDaysCTE AS (
+		SELECT YEAR(DATE) AS Year
+			,MONTH(DATE) AS Month
+			,DATE
+			,ROW_NUMBER() OVER (
+				PARTITION BY YEAR(DATE)
+				,MONTH(DATE) ORDER BY DATE
+				) AS BusinessDayNumber
+		FROM DateCTE
+		WHERE DATEPART(WEEKDAY, DATE) NOT IN (
+				1
+				,7
+				)
+		)
+
+SELECT *
+FROM BusinessDaysCTE
