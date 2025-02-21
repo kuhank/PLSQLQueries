@@ -1,0 +1,50 @@
+
+-- list of tablespaces
+SELECT *
+FROM dba_tablespaces;
+
+--size of table space
+SELECT *
+FROM dba_data_files;
+
+SELECT *
+FROM dba_free_space;
+
+SELECT *
+FROM dba_users;
+
+SELECT *
+FROM dba_roles;
+
+SELECT *
+FROM dba_sys_privs
+WHERE grantee = 'kuhan';
+
+SELECT *
+FROM DBA_TABLES;
+
+SELECT *
+FROM DBA_TAB_COLUMNS;
+
+SELECT *
+FROM V$SESSION;
+
+SELECT *
+FROM V$SQL
+WHERE ROWNUM <= 10;
+
+DESC V$SQL;
+
+-- data file --.dbf 
+-- tablespace -- folder with multiple datafile
+CREATE tablespace kuhan datafile 'C:\APP\ADMIN\PRODUCT\21C\ORADATA\XE\XEPDB1\kuhan.DBF' SIZE 100 M AUTOEXTEND ON;
+
+SELECT *
+FROM DBA_TS_QUOTAS;
+
+ALTER USER kuhan QUOTA 500 M ON kuhan;
+
+SELECT *
+FROM DBA_USERS;
+
+ALTER USER kuhan DEFAULT TABLESPACE kuhan;

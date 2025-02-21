@@ -1,0 +1,7 @@
+CREATE USER kuhan IDENTIFIED BY kuhan;
+
+grant connect , resource to kuhan;
+
+grant create session to kuhan;
+
+ALTER USER KUHAN QUOTA 500 M ON USERS;

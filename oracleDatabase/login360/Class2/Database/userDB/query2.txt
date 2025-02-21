@@ -1,0 +1,20 @@
+SELECT *
+FROM v$nls_parameters;
+
+ALTER session
+SET NLS_DATE_FORMAT = 'DD-MM-YYYY';--'DD-MM-RR'
+
+SELECT *
+FROM USER_USERS;
+
+SELECT *
+FROM USER_TABLES;
+
+SELECT *
+FROM dual;
+
+SELECT sysdate
+FROM dual;
+
+SELECT *
+FROM dual;

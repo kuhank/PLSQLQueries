@@ -1,0 +1,32 @@
+
+CREATE TABLE customer (
+	ID number(6,2)
+	,NAME varchar2(50)
+	,DOB DATE
+	,EMAIL VARCHAR2(100)
+	);
+
+
+INSERT INTO customer (
+	ID
+	,NAME
+	,DOB
+	,EMAIL
+	)
+VALUES (
+	1
+	,'KUHAN'
+	,'12-01-1994'
+	,'KUHAN@GMAIL.COM'
+	);
+
+
+SELECT * --ALL COLUMNS
+FROM customer;
+
+SELECT ID --selected COLUMNS
+FROM customer;
+
+
+ALTER session
+SET NLS_DATE_FORMAT = 'DD-MM-YYYY';'DD-MM-RR'

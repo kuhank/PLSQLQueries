@@ -1,0 +1,75 @@
+-- DDL -- autocommit
+ALTER TABLE customer ADD country VARCHAR2 (50);
+
+ALTER TABLE customer
+DROP COLUMN city;
+
+ALTER TABLE customer modify mobile VARCHAR(20);
+ALTER TABLE ddl_Scripting rename COLUMN numbers2 TO numbers4;
+
+rename customer TO customer_new;
+
+--truncate 
+TRUNCATE TABLE customer;
+
+--`drop
+DROP TABLE customer;
+
+
+
+-- DML -- need to explicitly commit and roll back
+
+INSERT INTO table
+VALUES (
+	1
+	,23.23
+	,'ad'
+	,'df'
+	,'gff'
+	,'01-01-2023'
+	);
+
+
+--update
+UPDATE ddl_scripts
+SET id = 30
+WHERE dob = '01-01-2023';
+
+
+DELETE
+FROM ddl_Scripts
+WHERE id = 5;
+
+
+-- DRL
+
+-- DRL
+--select
+SELECT *
+FROM user_tables;
+
+SELECT *
+FROM customer;
+
+SELECT count(*)
+FROM customer
+WHERE name IS NULL;
+
+SELECT name
+	,count(*) totalRecords
+FROM customer
+GROUP BY name
+HAVING count(*) > 1
+ORDER BY 1;
+
+DESC customer;
+
+
+-- TCL
+	--commit
+	--rollback
+	--savepoint
+	
+	--DCL
+	--grant
+	--revoke
